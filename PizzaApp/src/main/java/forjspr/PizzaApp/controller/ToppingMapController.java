@@ -8,23 +8,35 @@ import forjspr.PizzaApp.entities.ToppingMap;
 import forjspr.PizzaApp.service.ToppingMapService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
  * @author forjspr
  */
 @RestController
-@RequestMapping("api/ToppingMap")
+@RequestMapping("/toppingmap")
 public class ToppingMapController {
     @Autowired
     private ToppingMapService tmService;
     
     @GetMapping
-    public List<ToppingMap> getAll(){
-        return tmService.getAll();
+    public ResponseEntity<List<ToppingMap>> getAll(){
+        List<ToppingMap> tm = tmService.getAll();
+        return ResponseEntity.ok(tm);
+    }
+    
+    @GetMapping("/{id}")
+    public ResponseEntity<ToppingMap> getTopping(@PathVariable(value = "id") Integer id) {
+        ToppingMap tm = tmService.getTopping(id);
+        return ResponseEntity.ok(tm);
+    }
+
+    @PostMapping
+    public ResponseEntity<ToppingMap> createTopping(@RequestBody ToppingMap topping) {
+        ToppingMap tm = tmService.addTopping(topping);
+        return ResponseEntity.status(201).body(tm);
     }
  
 }

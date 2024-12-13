@@ -22,9 +22,33 @@ public class CustomerService {
 
     public List<Customer> getCustomers() {
         return cusRepo.findAll();
-    };
+    }
+
+    ;
     
     public Customer getCustomer(Integer id) {
         return cusRepo.findById(id).get();
-    };
+    }
+
+    ;
+    
+    public Customer addCustomer(Customer customer) {
+        return cusRepo.save(customer);
+    }
+
+    public Customer updateCustomer(Customer c) {
+        Customer cust = cusRepo.findById(c.getId()).get();
+
+        cust.setFirstName(c.getFirstName());
+        cust.setLastName(c.getLastName());
+        cust.setPhoneNumber(c.getPhoneNumber());
+        cust.setEmail(c.getEmail());
+        cust.setHouseNumber(c.getHouseNumber());
+        cust.setPassword(c.getPassword());
+        cust.setProvince(c.getProvince());
+        cust.setPostalCode(c.getPostalCode());
+        cust.setStreet(c.getStreet());
+
+        return cusRepo.save(cust);
+    }
 }

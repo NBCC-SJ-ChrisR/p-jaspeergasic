@@ -26,4 +26,9 @@ public class PizzaService {
     public Pizza getPizza(Integer id){
         return pizzaRepo.findById(id).get();
     }
+    
+    //POST
+    public Pizza addPizza(Pizza pizza) {
+        return pizzaRepo.save(pizza);
+    }
 }

@@ -32,31 +32,31 @@ public class Order {
     private BigDecimal orderTotal;
 
     @Column(nullable = false)
-    private String orderStatus;
+    private String orderStatus = "PENDING";
 
     @Column(nullable = false)
-    private int delivery;
+    private Byte delivery;
 
     @Column(nullable = false)
     private Instant deliveryDate;
 
     @Column(nullable = false)
-    private Instant orderPlacedDate;
+    private Instant orderPlacedDate = Instant.now();
 
     public Order() {
     }
 
-    public Order(Customer customer, BigDecimal subTotal, BigDecimal hst, BigDecimal orderTotal, String orderStatus, int delivery, Instant deliveryDate, Instant orderPlacedDate) {
+    public Order(Integer id, Customer customer, BigDecimal subTotal, BigDecimal hst, BigDecimal orderTotal, Byte delivery, Instant deliveryDate) {
+        this.id = id;
         this.customer = customer;
         this.subTotal = subTotal;
         this.hst = hst;
         this.orderTotal = orderTotal;
-        this.orderStatus = orderStatus;
         this.delivery = delivery;
         this.deliveryDate = deliveryDate;
-        this.orderPlacedDate = orderPlacedDate;
     }
 
+ 
     public Integer getId() {
         return id;
     }
@@ -105,11 +105,11 @@ public class Order {
         this.orderStatus = orderStatus;
     }
 
-    public int getDelivery() {
+    public Byte getDelivery() {
         return delivery;
     }
 
-    public void setDelivery(int delivery) {
+    public void setDelivery(Byte delivery) {
         this.delivery = delivery;
     }
 
@@ -128,7 +128,11 @@ public class Order {
     public void setOrderPlacedDate(Instant orderPlacedDate) {
         this.orderPlacedDate = orderPlacedDate;
     }
-    
-    
 
+    @Override
+    public String toString() {
+        return "Order{" + "id=" + id + ", customer=" + customer + ", subTotal=" + subTotal + ", hst=" + hst + ", orderTotal=" + orderTotal + ", orderStatus=" + orderStatus + ", delivery=" + delivery + ", deliveryDate=" + deliveryDate + ", orderPlacedDate=" + orderPlacedDate + '}';
+    }
+    
+    
 }

@@ -95,7 +95,11 @@ public class PizzaTopping {
     public void setIsActive(Byte isActive) {
         this.isActive = isActive;
     }
-    
+
+    @Override
+    public String toString() {
+        return "PizzaTopping{" + "id=" + id + ", name=" + name + ", price=" + price + ", createdDate=" + createdDate + ", empAddedBy=" + empAddedBy + ", isActive=" + isActive + '}';
+    }
     
     
     

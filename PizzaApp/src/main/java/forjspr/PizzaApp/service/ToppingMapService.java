@@ -22,5 +22,20 @@ public class ToppingMapService {
     public List<ToppingMap> getAll(){
         return tmRepo.findAll();
     }
+    
+    //GET ALL
+    public List<ToppingMap> getToppings() {
+        return tmRepo.findAll();
+    }
+
+    //GET IND
+    public ToppingMap getTopping(Integer id) {
+        return tmRepo.findById(id).get();
+    }
+
+    //POST
+    public ToppingMap addTopping(ToppingMap topping) {
+        return tmRepo.save(topping);
+    }
    
 }

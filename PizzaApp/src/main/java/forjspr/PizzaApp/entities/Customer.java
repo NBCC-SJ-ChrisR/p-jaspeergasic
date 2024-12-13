@@ -1,8 +1,6 @@
 package forjspr.PizzaApp.entities;
 
 import jakarta.persistence.*;
-import java.util.LinkedHashSet;
-import java.util.Set;
 
 /**
  *
@@ -41,8 +39,8 @@ public class Customer {
     @Column(nullable = false, length = 7)
     private String postalCode;
 
-//    @OneToMany(mappedBy = "customer")
-//    private Set<Order> orders = new LinkedHashSet<>();
+    @Column(nullable = false)
+    private String password;
 
     public Customer() {
     }
@@ -58,8 +56,6 @@ public class Customer {
         this.province = province;
         this.postalCode = postalCode;
     }
-
-    
 
     public Integer getId() {
         return id;
@@ -133,12 +129,12 @@ public class Customer {
         this.postalCode = postalCode;
     }
 
-//    public Set<Order> getOrders() {
-//        return orders;
-//    }
-//
-//    public void setOrders(Set<Order> orders) {
-//        this.orders = orders;
-//    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
 }

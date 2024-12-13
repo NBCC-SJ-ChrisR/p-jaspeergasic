@@ -40,7 +40,8 @@ public class Pizza {
     public Pizza() {
     }
 
-    public Pizza(Order order, PizzaSize size, PizzaCrust crust, Integer quantity, BigDecimal priceEach, BigDecimal totalPrice) {
+    public Pizza(Integer id, Order order, PizzaSize size, PizzaCrust crust, Integer quantity, BigDecimal priceEach, BigDecimal totalPrice) {
+        this.id = id;
         this.order = order;
         this.size = size;
         this.crust = crust;
@@ -48,6 +49,7 @@ public class Pizza {
         this.priceEach = priceEach;
         this.totalPrice = totalPrice;
     }
+
 
     public Integer getId() {
         return id;
